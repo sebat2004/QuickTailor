@@ -2,7 +2,7 @@
     name: Build and Deploy Vue App to CloudFront
     on:
         push:
-            branches: [ master ]
+            branches: [ main ]
     jobs:
         build-and-deploy:
             name: Build and Deploy
@@ -26,7 +26,7 @@
             
             - name: Install Dependencies
               run: |
-                node ci ==production
+                node --version
                 npm ci --production
             
             - name: Build Static Website
