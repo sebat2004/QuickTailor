@@ -1,4 +1,8 @@
 ---
+    permissions:
+        id-token: write
+        contents: read
+
     name: Build and Deploy Vue App to CloudFront
     on:
         push:
