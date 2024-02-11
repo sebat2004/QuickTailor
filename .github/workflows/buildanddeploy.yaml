@@ -1,8 +1,4 @@
 ---
-    permissions:
-        id-token: write
-        contents: read
-
     name: Build and Deploy Vue App to CloudFront
     on:
         push:
@@ -11,22 +7,24 @@
         build-and-deploy:
             name: Build and Deploy
             runs-on: ubuntu-latest
+            permissions:
+                id-token: write
+                contents: read        
             env:
                 BUCKET: quicktailorbucket
-                DIST: build
-                REGION: us-west-2
+                DIST: ./frontend/dist
                 DIST_ID: E3JJUGWID1KV7V
+                ROLE_TO_ASSUME: arn:aws:iam::339712804477:user/github-actions
 
             steps:
             - name: Checkout
-              uses: actions/checkout@v2
+              uses: actions/checkout@v4
             
             - name: Configure AWS Credentials
-              uses: aws-actions/configure-aws-credentials@v1
+              uses: aws-actions/configure-aws-credentials@v4
               with:
-                aws-access-key-id: ${{ secrets.ACCESS_KEY_ID }} 
-                aws-secret-access-key: ${{ secrets.SECRET_ACCESS_KEY }}
-                aws-region: us-west-2
+                aws-region: us-west-2      
+                role-to-assume: ${{ env.ROLE_TO_ASSUME }}
             
             - name: Install Dependencies
               run: |
@@ -37,7 +35,7 @@
               run: npm run build
 
             - name: Copy files to the producirton website with the AWS CLI
-              run: aws s3 sync build s3://quicktailorbucket
+              run: aws s3 sync ${{ env.DIST }} s3://${{ env.BUCKET }}
 
             - name: Copy files to the production website with the AWS CLI
-              run: aws cloudfront create-invalidation --distribution-id E3JJUGWID1KV7V --paths "/*"
+              run: aws cloudfront create-invalidation --distribution-id ${{env.DIST_ID}} --paths "/*"
