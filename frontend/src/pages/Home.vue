@@ -9,7 +9,7 @@ import NavComponent from '../components/NavComponent.vue'
     <div class="container">
       <div class="left">
         <h1>Speed Up the Application Process</h1>
-        <h2>Effortlessly craft tailored resumes to accelerate your career journey!!!</h2>
+        <h2>Effortlessly craft tailored resumes to accelerate your career journey...</h2>
       </div>
       <div class="right">
         <img src="../assets/Blank_Resumes.svg" alt="Blank Resumes" />
