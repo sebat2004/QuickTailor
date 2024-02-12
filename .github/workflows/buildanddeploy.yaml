@@ -28,12 +28,13 @@
             
             - name: Install Dependencies
               run: |
-                cd ./frontend
                 node --version
                 npm ci --production
+              working-directory: ./frontend/
             
             - name: Build Static Website
               run: npm run build
+              working-directory: ./frontend/
 
             - name: Copy files to the producirton website with the AWS CLI
               run: aws s3 sync ${{ env.DIST }} s3://${{ env.BUCKET }}
