@@ -28,6 +28,7 @@
             
             - name: Install Dependencies
               run: |
+                cd ./frontend
                 node --version
                 npm ci --production
             
