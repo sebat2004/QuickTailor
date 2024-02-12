@@ -35,7 +35,7 @@ import { Button } from '@/components/ui/button'
 .logo_section h3 {
     font-size: 2.2rem;
     font-weight: 500;
-    color: #000;
+    color: #223549;
     transform: translate(-10px, 8px);
 }
 
