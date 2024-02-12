@@ -14,14 +14,14 @@
                 BUCKET: quicktailorbucket
                 DIST: ./frontend/dist
                 DIST_ID: E3JJUGWID1KV7V
-                ROLE_TO_ASSUME: arn:aws:iam::339712804477:user/github-actions
+                ROLE_TO_ASSUME: arn:aws:iam::339712804477:role/ghactionsrole
 
             steps:
             - name: Checkout
               uses: actions/checkout@v4
             
             - name: Configure AWS Credentials
-              uses: aws-actions/configure-aws-credentials@v4
+              uses: aws-actions/configure-aws-credentials@master
               with:
                 aws-region: us-west-2      
                 role-to-assume: ${{ env.ROLE_TO_ASSUME }}
