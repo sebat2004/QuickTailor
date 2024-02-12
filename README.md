@@ -14,8 +14,8 @@ that match the criteria of their desired job posting.
 
 ## Technology Stack
 - **Frontend**: 
-  - Developed using [Vue.js]([https://reactjs.org/](https://vuejs.org/)).
-  - [Shadcn for Vue]([https://tailwindcss.com/](https://www.shadcn-vue.com/)) to speed up the development process with UI components.
+  - Developed using [Vue.js](https://vuejs.org/).
+  - [Shadcn for Vue](https://www.shadcn-vue.com/) to speed up the development process with UI components.
   - Built with [Vite](https://vitejs.dev/) for fast and efficient frontend tooling.
 - **Backend**: 
   - Employs [Django]([https://expressjs.com/](https://www.djangoproject.com/)).
