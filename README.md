@@ -15,4 +15,7 @@ that match the criteria of their desired job posting.
   - [Shadcn for Vue](https://www.shadcn-vue.com/) to speed up the development process with UI components.
   - Built with [Vite](https://vitejs.dev/) for fast and efficient frontend tooling.
 - **Backend**: 
-  - Employs [Django]([https://expressjs.com/](https://www.djangoproject.com/)).
+  - Employs [Django](https://www.djangoproject.com/).
+  - Utilizes [RabbitMQ](https://rabbitmq.com/) to distribute tailoring requests among several microservice instances, keeping our application speedy as it scales.
+  - Stores data in a [PostgreSQL](https://www.postgresql.org/) database hosted with AWS RDS.
+  
