@@ -7,10 +7,7 @@ that match the criteria of their desired job posting.
 
 ## Features
 - **Resume Creation**: Users can craft a master resume, not limited to one page.
-- **Job Posting Submission**: Offers a list of tracks from the selected playist to translate the song lyrics from.
-- **Word Translation**: Translates the most common non-english words from the selected track into english.
-- **Easy Learning**: Makes it easy to learn and understand the lyrics in different languages.
-- **User-Friendly Interface**: Simple and intuitive interface for a seamless user experience.
+- **Application Tracker**: Track applications that you created a tailored resume for.
 
 ## Technology Stack
 - **Frontend**: 
