@@ -1,17 +1,21 @@
 <script setup lang="ts">
 import { Button } from '@/components/ui/button'
+import { useRouter } from 'vue-router';
+
+// get access to the router
+const router = useRouter();
+
+// method to navigate back to the landing page whenever the logo is clicked
+const navigateToLanding = () => {
+  router.push('/');
+};
 </script>
 
 <template>
     <div class="navbar">
-        <div class="logo_section">
-            <img src="../assets/QuickTailor_Logo.svg" alt="Name" class="navbar_logo"/>
-            <h3>uickTailor</h3>
-        </div>
-
-        <div class="buttons">
-            <Button variant="outline">Login</Button>
-            <Button variant="secondary">Sign Up</Button>
+        <div id="logo_section">
+            <img @click="navigateToLanding" src="../assets/QuickTailor_Logo.svg" alt="Name" id="navbar_logo"/>
+            <h3 @click="navigateToLanding">uickTailor</h3>
         </div>
     </div>
 </template>
@@ -19,32 +23,39 @@ import { Button } from '@/components/ui/button'
 <style scoped>
 .navbar {
     width: 100%;
-    height: 10vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    background-color: transparent;
+    position: fixed;
+    top: 30px;
+    left: 40px;
 }
 
-.logo_section {
+#logo_section {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.logo_section h3 {
+#logo_section h3 {
     font-size: 2.2rem;
     font-weight: 500;
     color: #223549;
     transform: translate(-10px, 8px);
 }
 
-.navbar_logo {
+#logo_section h3:hover {
+    cursor: pointer;
+}
+
+#navbar_logo {
     width: 72px;
     height: 72px;
 }
-.buttons {
-    display: flex;
-    gap: 10px;
+
+#navbar_logo:hover {
+    cursor: pointer;
 }
 </style>
