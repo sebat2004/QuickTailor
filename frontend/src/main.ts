@@ -7,12 +7,14 @@ import './style.css';
 import LandingPage from './pages/LandingPage.vue';
 import LoginPage from './pages/LoginPage.vue';
 import SignUpPage from './pages/SignUpPage.vue';
+import HomePage from './pages/HomePage.vue';
 
 // create the possible routes
 const routes = [
   { path: '/', component: LandingPage },
   { path: '/login', component: LoginPage },
   { path: '/signup', component: SignUpPage },
+  { path: '/home', component: HomePage },
 ];
 
 // create router instance

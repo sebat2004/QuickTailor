@@ -75,8 +75,9 @@ const navigateToSignUp = () => {
 }
 #right {
   width: 40%;
-  height: 100%;
+  height: 90vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
