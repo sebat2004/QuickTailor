@@ -2,6 +2,21 @@
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import NavComponent from '../components/NavComponent.vue'
+import { useRouter } from 'vue-router';
+
+// get access to the router
+const router = useRouter();
+
+// method to navigate to the login page
+const navigateToHome = () => {
+  router.push('/home');
+};
+
+// method to navigate to the sign up page
+const navigateToSignUp = () => {
+  router.push('/signup');
+};
+
 </script>
 
 <template>
@@ -13,10 +28,11 @@ import NavComponent from '../components/NavComponent.vue'
     <h2>Enter to start tailoring.</h2>
     <form>
       <p><span>Email</span> <span style="color: red;">*</span></p>
-      <Input class="input" disabled type="email" placeholder="Enter your email address" />
+      <Input class="input" type="email" placeholder="Enter your email address" />
       <p><span>Password</span> <span style="color: red;">*</span></p>
-      <Input class="input" disabled type="password" placeholder="Enter password" />
-      <Button class="button" variant="secondary" type="submit">Login</Button>
+      <Input class="input" type="password" placeholder="Enter password" />
+      <Button class="button" variant="secondary" type="submit" @click="navigateToHome">Login</Button>
+      <p><span>Don't have an account yet?</span> <span id="sign-up-text" @click="navigateToSignUp">Sign Up</span></p>
     </form>
 
   </div>
@@ -83,6 +99,7 @@ h2 {
 .button {
   margin-top: 20px;
   width: 100%;
+  margin-bottom: 10px;
 }
 
 p {
@@ -91,5 +108,13 @@ p {
 
 .input {
   margin-bottom: 15px;
+}
+
+#sign-up-text {
+  color: #3698FF;
+}
+
+#sign-up-text:hover {
+  cursor: pointer;
 }
 </style>
