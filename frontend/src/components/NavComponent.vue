@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Button } from '@/components/ui/button'
 import { useRouter } from 'vue-router';
 
 // get access to the router
