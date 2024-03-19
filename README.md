@@ -15,7 +15,8 @@ that match the criteria of their desired job posting.
   - [Shadcn for Vue](https://www.shadcn-vue.com/) to speed up the development process with UI components.
   - Built with [Vite](https://vitejs.dev/) for fast and efficient frontend tooling.
 - **Backend**: 
-  - Employs [Django](https://www.djangoproject.com/).
-  - Utilizes [RabbitMQ](https://rabbitmq.com/) to distribute tailoring requests among several microservice instances, keeping our application speedy as it scales.
+  - Employs [Golang](https://go.dev/) for our RESTFUL API and our tailoring microservice.
+  - Utilizes [RabbitMQ](https://rabbitmq.com/) for asynchronous request processing and to distribute requests among several instances of our load-balanced tailoring microservice, keeping our application speedy as it scales.
+  - Uses [Redis](https://redis.io/) for distributed caching and user session storage.
   - Stores data in a [PostgreSQL](https://www.postgresql.org/) database hosted with AWS RDS.
   
