@@ -8,6 +8,10 @@ const router = useRouter();
 const navigateToLanding = () => {
   router.push('/');
 };
+
+const navigateToAbout = () => {
+  router.push('/about');
+};
 </script>
 
 <template>

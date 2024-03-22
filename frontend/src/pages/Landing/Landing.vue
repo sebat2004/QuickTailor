@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import NavComponent from '../components/NavComponent.vue'
+import NavComponent from '../../components/Navbar.vue'
 import { Button } from '@/components/ui/button'
 import { useRouter } from 'vue-router';
 
