@@ -1,10 +1,9 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
 <template>
     <div>
-      <!-- route components are rendered here -->
-      <router-view />
+        <!-- route components are rendered here -->
+        <router-view />
     </div>
 </template>
 
