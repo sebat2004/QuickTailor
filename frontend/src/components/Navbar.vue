@@ -1,64 +1,72 @@
 <script setup lang="ts">
-import { useRouter } from 'vue-router';
+import { useRouter } from "vue-router";
+const props = defineProps(["color", "position"]);
 
 // get access to the router
 const router = useRouter();
 
-// method to navigate back to the landing page whenever the logo is clicked
+// navigation methods
 const navigateToLanding = () => {
-  router.push('/');
+  router.push("/");
 };
 
 const navigateToAbout = () => {
-  router.push('/about');
+  router.push("/about");
 };
 </script>
 
 <template>
-    <div class="navbar">
-        <div id="logo_section">
-            <img @click="navigateToLanding" src="../assets/QuickTailor_Logo.svg" alt="Name" id="navbar_logo"/>
-            <h3 @click="navigateToLanding">uickTailor</h3>
-        </div>
+  <div
+    class="navbar"
+    :style="`--element-color: ${props.color}; --position: ${props.position}`"
+  >
+    <div id="logo_section">
+      <img
+        @click="navigateToLanding"
+        src="../assets/QuickTailor_Logo.svg"
+        alt="Name"
+        id="navbar_logo"
+      />
+      <h3 @click="navigateToLanding">uickTailor</h3>
     </div>
+  </div>
 </template>
 
 <style scoped>
 .navbar {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    background-color: transparent;
-    position: fixed;
-    top: 30px;
-    left: 40px;
+  position: var(--position);
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--element-color);
+  padding: 20px 30px;
 }
 
 #logo_section {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 #logo_section h3 {
-    font-size: 2.2rem;
-    font-weight: 500;
-    color: #223549;
-    transform: translate(-10px, 8px);
+  font-size: 2.2rem;
+  font-weight: 500;
+  color: #223549;
+  transform: translate(-10px, 8px);
 }
 
 #logo_section h3:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 #navbar_logo {
-    width: 72px;
-    height: 72px;
+  width: 65px;
+  height: 65px;
 }
 
 #navbar_logo:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 </style>
