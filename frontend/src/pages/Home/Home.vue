@@ -30,6 +30,7 @@ const search = ref(''); // search query
 </template>
 
 <style scoped>
+
 .content {
     height: 100%;
     width: 100%;
