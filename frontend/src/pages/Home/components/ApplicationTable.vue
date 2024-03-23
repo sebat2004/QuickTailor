@@ -1,57 +1,66 @@
 <script setup lang="ts">
-
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 // Types
 interface Application {
-    name: string;
-    date: string;
-};
+    name: string
+    date: string
+}
 
-
-const applications = ref<Application[]>([]);
+const applications = ref<Application[]>()
+const props = defineProps(['search']);
 
 // Simulate backend API call
-applications.value = [
+// TODO: Connect to backend API
+let apiResponse = [
     { name: 'Cboe Global Markets', date: '02/15/2024' },
     { name: 'Google', date: '02/15/2024' },
-    { name: 'Freddie Mac', date: '02/15/2024' }
-];
+    { name: 'Freddie Mac', date: '02/15/2024' },
+    { name: 'Amazon', date: '02/15/2024'}
+]
 
+// Filter api response based on search query
+// TODO: Filter with fuzzy searching
+if (props.search) {
+    apiResponse = apiResponse.filter((application) => application.name.toLowerCase().includes(props.search.toLowerCase()))
+}
+
+applications.value = apiResponse;
 </script>
 
 <template>
-<table class="table">
-    <thead>
-        <tr class="table-header">
-            <th class="pos-header header-item">Company</th>
-            <th class="header-item">Date Applied</th>
-            <th class="header-item">Resume</th>
-        </tr>
-    </thead>
-    <div v-if="applications">
-        <tbody v-for="(application, index) in applications">
-            <tr v-if="index >= 1" class="row-divider"></tr>
-            <tr class="table-row">
-                <td class="table-data table-link">{{ application.name  }}</td>
-                <td class="table-data">{{ application.date }}</td>
-                <td class="table-data">📄</td>
+    <table class="table">
+        <thead>
+            <tr class="table-header">
+                <th class="pos-header header-item">Company</th>
+                <th class="header-item">Date Applied</th>
+                <th class="header-item">Resume</th>
+            </tr>
+        </thead>
+        <template v-if="applications">
+            <tbody v-for="(application, index) in applications">
+                <tr v-if="index >= 1" class="row-divider"></tr>
+                <tr class="table-row">
+                    <td class="table-data table-link">{{ application.name }}</td>
+                    <td class="table-data">{{ application.date }}</td>
+                    <td class="table-data">📄</td>
+                </tr>
+            </tbody>
+        </template>
+        <tbody v-if="applications && applications.length === 0" class="table-empty">
+            <tr>
+                <td>No applications found :(</td>
             </tr>
         </tbody>
-    </div>
-    <tbody v-if="applications && applications.length === 0" class="table-empty">
-        <tr>
-            <td>No applications found :(</td>
-        </tr>
-    </tbody>
-    <tbody v-if="!applications" class="loading-container">
-        <tr v-for="index in 4" class="loading-row animated-background"></tr>
-    </tbody>
-</table>
+        <template v-if="!applications">
+            <tbody v-for="index in 4" class="loading-container">
+                <tr :key="index" v-if="index > 1" class="row-divider"></tr>
+                <tr :key="index" class="loading-row animated-background"></tr>
+            </tbody>
+        </template>        
+    </table>
 
-<table v-if="!applications">
-
-</table>
+    <table v-if="!applications"></table>
 </template>
 
 <style>
@@ -69,7 +78,7 @@ table {
 }
 
 .table-link {
-    color: #0070E0;
+    color: #0070e0;
     text-decoration: none;
     width: 30%;
 }
@@ -79,9 +88,10 @@ table {
     cursor: pointer;
 }
 
-.header-item, .table-data {
-  padding: 10px;
-  text-align: left;
+.header-item,
+.table-data {
+    padding: 10px;
+    text-align: left;
 }
 
 .table-row {
@@ -102,31 +112,11 @@ tbody {
 
 thead {
     display: flex;
-
 }
 
 .table-row:hover {
-    background-color:rgb(241, 241, 241);
+    background-color: rgb(241, 241, 241);
     transition: 0.1s ease-in;
-}
-
-.table-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: Arial, sans-serif;
-    background: white;
-    padding: 50px;
-    border-radius: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    height: 70%;
-}
-
-.table-container h2 {
-    color: #223549;
-    font-size: 34px;
-    font-weight: bold;
-    margin-bottom: 20px;
 }
 
 .table-empty {
@@ -148,15 +138,15 @@ thead {
     width: 100%;
     position: sticky;
     top: 0;
+    padding: 0 10px;
     background-color: white;
-    margin: 0 15px;
-    border-bottom: 1px solid #9C9C9C;
-
+    border-bottom: 2px solid #bdbdbd;
+    padding-bottom: 5px;
 }
 
 .row-divider {
-    border: 1px solid #9C9C9C;
-    margin: 0 10px;
+    border: 1px solid #bdbdbd;
+    margin-bottom: 2px;
 }
 
 .loading-row {
@@ -174,10 +164,10 @@ thead {
 
 @keyframes placeHolderShimmer {
     0% {
-      background-position: -800px 0
+        background-position: -800px 0;
     }
     100% {
-      background-position: 800px 0
+        background-position: 800px 0;
     }
 }
 
@@ -192,4 +182,5 @@ thead {
     background-size: 800px 104px;
     position: relative;
 }
+
 </style>
