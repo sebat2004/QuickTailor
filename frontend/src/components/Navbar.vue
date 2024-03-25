@@ -1,19 +1,24 @@
 <script setup lang="ts">
-import { useRouter } from 'vue-router';
+import { useRouter } from 'vue-router'
+const props = defineProps(['color', 'position'])
 
 // get access to the router
-const router = useRouter();
+const router = useRouter()
 
-// method to navigate back to the landing page whenever the logo is clicked
+// navigation methods
 const navigateToLanding = () => {
-  router.push('/');
-};
+    router.push('/')
+}
+
+const navigateToAbout = () => {
+    router.push('/about')
+}
 </script>
 
 <template>
-    <div class="navbar">
+    <div class="navbar" :style="`--element-color: ${props.color}; --position: ${props.position}`">
         <div id="logo_section">
-            <img @click="navigateToLanding" src="../assets/QuickTailor_Logo.svg" alt="Name" id="navbar_logo"/>
+            <img @click="navigateToLanding" src="../assets/QuickTailor_Logo.svg" alt="Name" id="navbar_logo" />
             <h3 @click="navigateToLanding">uickTailor</h3>
         </div>
     </div>
@@ -21,15 +26,14 @@ const navigateToLanding = () => {
 
 <style scoped>
 .navbar {
+    position: var(--position);
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: transparent;
-    position: fixed;
-    top: 30px;
-    left: 40px;
+    background-color: var(--element-color);
+    padding: 20px 30px;
 }
 
 #logo_section {
@@ -50,8 +54,8 @@ const navigateToLanding = () => {
 }
 
 #navbar_logo {
-    width: 72px;
-    height: 72px;
+    width: 65px;
+    height: 65px;
 }
 
 #navbar_logo:hover {

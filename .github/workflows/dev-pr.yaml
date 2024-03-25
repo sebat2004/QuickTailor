@@ -1,11 +1,12 @@
 ---
-    name: Build and Deploy Vue App to CloudFront
+    name: Check deployment works
     on:
-        push:
-            branches: [ main ]
+        pull_request:
+            types: [opened, reopened]
+            branches: ['main']
     jobs:
-        build-and-deploy:
-            name: Build and Deploy
+        deploy-check:
+            name: Deploy Check
             runs-on: ubuntu-latest
             permissions:
                 id-token: write
@@ -15,6 +16,7 @@
                 DIST: ./frontend/dist
                 DIST_ID: E3JJUGWID1KV7V
                 ROLE_TO_ASSUME: arn:aws:iam::339712804477:role/ghactionsrole
+            environment: aws-s3-deploy
 
             steps:
             - name: Checkout
@@ -36,9 +38,3 @@
               run: |
                 cd ./frontend
                 npm run build
-
-            - name: Copy files to the producirton website with the AWS CLI
-              run: aws s3 sync ${{ env.DIST }} s3://${{ env.BUCKET }}
-
-            - name: Copy files to the production website with the AWS CLI
-              run: aws cloudfront create-invalidation --distribution-id ${{env.DIST_ID}} --paths "/*"

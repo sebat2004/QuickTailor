@@ -6,10 +6,10 @@
 export {}
 
 declare module 'vue' {
-  export interface GlobalComponents {
-    Button: typeof import('./src/components/ui/button/Button.vue')['default']
-    ElButton: typeof import('element-plus/es')['ElButton']
-    HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
-    NavComponent: typeof import('./src/components/NavComponent.vue')['default']
-  }
+    export interface GlobalComponents {
+        Button: (typeof import('./src/components/ui/button/Button.vue'))['default']
+        ElButton: (typeof import('element-plus/es'))['ElButton']
+        HelloWorld: (typeof import('./src/components/HelloWorld.vue'))['default']
+        NavComponent: (typeof import('./src/components/NavComponent.vue'))['default']
+    }
 }
