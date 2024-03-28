@@ -10,21 +10,23 @@ interface Application {
 const applications = ref<Application[]>()
 const props = defineProps(['search']);
 
+let apiResponse;
 // Simulate backend API call
 // TODO: Connect to backend API
-let apiResponse = [
+apiResponse = [
     { name: 'Cboe Global Markets', date: '02/15/2024' },
     { name: 'Google', date: '02/15/2024' },
     { name: 'Freddie Mac', date: '02/15/2024' },
     { name: 'Amazon', date: '02/15/2024'}
 ]
 
+
+
 // Filter api response based on search query
 // TODO: Filter with fuzzy searching
 if (props.search) {
     apiResponse = apiResponse.filter((application) => application.name.toLowerCase().includes(props.search.toLowerCase()))
 }
-
 applications.value = apiResponse;
 </script>
 
@@ -152,7 +154,7 @@ thead {
 .loading-row {
     width: 100%;
     height: 40px;
-    border-radius: 20px;
+    border-radius: 5px;
 }
 
 .loading-container {
@@ -181,6 +183,22 @@ thead {
     background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
     background-size: 800px 104px;
     position: relative;
+}
+
+@media (max-width: 800px) {
+    .pos-header {
+        width: 50%;
+    }
+    .table-link {
+        width: 40%;
+    }
+    .table-header th {
+        font-size: 0.8rem;
+    }
+    .header-item,
+    .table-data {
+        font-size: 0.8rem;
+    }
 }
 
 </style>

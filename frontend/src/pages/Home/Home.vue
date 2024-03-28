@@ -12,18 +12,16 @@ const search = ref(''); // search query
     <div class="content">
         <Navbar color="#E7E9EA" />
         <div class="home-body">
-            <div id="left">
-                <div id="upload-button">Upload a Job Posting</div>
-                <div id="craft-button">Craft Your Master Resume</div>
+            <div class="actions-container">
+                <button id="upload-button">Upload a Job Posting</button>
+                <button id="craft-button">Craft Your Master Resume</button>
             </div>
-            <div id="right">
-                <div class="table-container">
-                    <div class="table-caption">
-                        <h2>Your Recent Applications</h2>
-                        <Input v-model="search" class="search-input" type="search" placeholder="Search company name..." />
-                    </div>
-                    <ApplicationTable :key="search" :search="search" />
+            <div class="table-container">
+                <div class="table-caption">
+                    <h2>Past Job Applications</h2>
+                    <Input v-model="search" class="search-input" type="search" placeholder="Search..." />
                 </div>
+                <ApplicationTable :key="search" :search="search" />
             </div>
         </div>
     </div>
@@ -40,53 +38,52 @@ const search = ref(''); // search query
     background-color: #e7e9ea;
 }
 
-#left {
-    width: 450px;
-    height: 100%;
+.home-body {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 40px 0;
+}
+
+.actions-container {
+    width: 85%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 8%;
+    align-items: center;
+    margin-bottom: 30px;
 }
 
 #upload-button {
-    width: 70%;
-    height: 100px;
+    height: 80px;
     background-color: #223549;
     color: white;
     border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     text-align: center;
-    margin-bottom: 40px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    padding: 0 8%;
+    font-weight: 600;
 }
 
 #craft-button {
-    width: 70%;
-    height: 100px;
+    height: 80px;
+    padding: 0 7%;
     background-color: white;
     color: #223549;
     border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     text-align: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-#right {
-    width: 80%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
+    font-weight: 600;
 }
 
 .search-input {
     margin-bottom: 10px;
-    width: 40%;
     background-color: #e7e9ea;
+    height: 35px;
+    width: 60%;
 }
 
 .table-container {
@@ -99,12 +96,11 @@ const search = ref(''); // search query
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     height: 90%;
-    width: 90%;
+    width: 70%;
 }
 
 .table-container h2 {
     color: #223549;
-    font-size: 26px;
     font-weight: 600;
 }
 
@@ -115,13 +111,15 @@ const search = ref(''); // search query
     align-items: center;
     width: 100%;
     border-bottom: 2px solid #7f7f7f;
-    padding: 10px 20px;
+    padding: 10px 30px;
+    text-align: center;
 }
 
 .table-caption h2 {
-    margin: 0;
-    width: 40%;
-    text-align: center;
+    margin-right: 10px;
+    width: 60%;
+    text-align: left;
+    font-size: 1.7rem;
 }
 
 .search-input {
@@ -130,34 +128,98 @@ const search = ref(''); // search query
     border: 0.5px solid #223549;
 }
 
-.home-body {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-}
+@media (max-width: 1000px) {
+    .actions-container {
+        margin-bottom: 20px;
+    }
 
-@media (max-width: 900px) {
-    #right {
-        display: none;
+    .table-container {
+        width: 80%;
+        padding: 20px 20px;
+    }
+
+    .table-caption h2 {
+        text-align: left;
+        margin-left: 20px;
+        font-size: 1.2rem;
+        margin-right: 0px;
+    }
+
+    .table-caption {
+        gap: 50px;
+        padding: 10px 0px;
+    }
+
+    .actions-container {
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    #upload-button {
+        height: 65px;
+        padding: 0 5%;
+        background-color: #223549;
+        font-size: 0.8rem;
+        text-align: center;
+        color: white;
+        border-radius: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
     
-    #left {
-        width: 100%;
-        margin-top: 30%;
-        justify-content: normal;
-        align-items: center;
+    #craft-button {
+        height: 65px;
+        padding: 0 8%;
+        font-size: 0.8rem;
     }
- 
-    #upload-button {
-        font-size: 1.2rem;
-        width: 50%;
+    
+}
+
+@media (max-width: 500px) {
+    .actions-container {
+        margin-bottom: 10px;
     }
 
-    #craft-button {
-        font-size: 1.2rem;
-        width: 50%;
+    .table-container {
+        width: 95%;
+        padding: 20px 10px;
     }
+
+    .table-caption h2 {
+        font-size: 1rem;
+    }
+
+    .table-caption {
+        gap: 20px;
+        padding: 10px 0px;
+    }
+
+    .search-input {
+        width: 50%;
+        height: 30px;
+    }
+
+    .actions-container {
+        width: 95%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    #upload-button {
+        height: 50px;
+        padding: 0 5%;
+        font-size: 0.7rem;
+    }
+    
+    #craft-button {
+        height: 50px;
+        padding: 0 5%;
+        font-size: 0.7rem;
+    }
+    
 }
 </style>
