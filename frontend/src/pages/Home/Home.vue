@@ -4,8 +4,7 @@ import ApplicationTable from './components/ApplicationTable.vue'
 import { Input } from '@/components/ui/input'
 import { ref } from 'vue'
 
-const search = ref(''); // search query
-
+const search = ref('') // search query
 </script>
 
 <template>
@@ -28,7 +27,6 @@ const search = ref(''); // search query
 </template>
 
 <style scoped>
-
 .content {
     height: 100%;
     width: 100%;
@@ -168,13 +166,12 @@ const search = ref(''); // search query
         border-radius: 20px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
-    
+
     #craft-button {
         height: 65px;
         padding: 0 8%;
         font-size: 0.8rem;
     }
-    
 }
 
 @media (max-width: 500px) {
@@ -214,12 +211,11 @@ const search = ref(''); // search query
         padding: 0 5%;
         font-size: 0.7rem;
     }
-    
+
     #craft-button {
         height: 50px;
         padding: 0 5%;
         font-size: 0.7rem;
     }
-    
 }
 </style>

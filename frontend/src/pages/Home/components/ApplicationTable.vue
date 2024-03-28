@@ -8,26 +8,24 @@ interface Application {
 }
 
 const applications = ref<Application[]>()
-const props = defineProps(['search']);
+const props = defineProps(['search'])
 
-let apiResponse;
+let apiResponse
 // Simulate backend API call
 // TODO: Connect to backend API
 apiResponse = [
     { name: 'Cboe Global Markets', date: '02/15/2024' },
     { name: 'Google', date: '02/15/2024' },
     { name: 'Freddie Mac', date: '02/15/2024' },
-    { name: 'Amazon', date: '02/15/2024'}
+    { name: 'Amazon', date: '02/15/2024' },
 ]
-
-
 
 // Filter api response based on search query
 // TODO: Filter with fuzzy searching
 if (props.search) {
     apiResponse = apiResponse.filter((application) => application.name.toLowerCase().includes(props.search.toLowerCase()))
 }
-applications.value = apiResponse;
+applications.value = apiResponse
 </script>
 
 <template>
@@ -59,7 +57,7 @@ applications.value = apiResponse;
                 <tr :key="index" v-if="index > 1" class="row-divider"></tr>
                 <tr :key="index" class="loading-row animated-background"></tr>
             </tbody>
-        </template>        
+        </template>
     </table>
 
     <table v-if="!applications"></table>
@@ -200,5 +198,4 @@ thead {
         font-size: 0.8rem;
     }
 }
-
 </style>
